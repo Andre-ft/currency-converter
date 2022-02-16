@@ -1,0 +1,16 @@
+.list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 500px; */
+  width: 800px;
+}
+
+.header {
+  border-bottom: 1px solid rgb(228, 228, 228);
+}

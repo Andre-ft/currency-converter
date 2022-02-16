@@ -1,0 +1,8 @@
+.currencyBlock {
+  width: 300px;
+  display: inline-block;
+}
+
+.inputBlock {
+  display: flex;
+}
