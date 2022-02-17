@@ -8,9 +8,10 @@ export default function Header({currencyRates}) {
     return (<>
         <header className={s.header}>
             <ul className={s.list}>
-                {currencyRates.map(currency => (
-                    <CurrencyItem key={currency.ccy}  item={currency} />
-                ))}
+                {currencyRates.map(currency => {
+                    if (currency.ccy === 'UAH') return '';
+                    return <CurrencyItem key={currency.ccy} item={currency} />
+                })}
             </ul>
         </header>
     </>)

@@ -1,5 +1,6 @@
 import React, {  useState, useEffect } from 'react';
 import s from './CurrencyConverter.module.css';
+import CurrencyBlock from '../CurrencyBlock';
 
 export default function CurrencyConverter({currencyRates}) {
   const [firstCurrencyValue, setFirstCurrencyValue] = useState(100);
@@ -18,21 +19,23 @@ export default function CurrencyConverter({currencyRates}) {
 
   useEffect(() => {
     if (currencyRates.length !== 0 && flag !== 'second') {
-      console.log('flag', flag);
       const secondValue = (firstCurrencyValue * parseFloat(firstCurrentCurrencyObj.buy) / parseFloat(secondCurrentCurrencyObj.sale)).toFixed(2);
-      secondValue !== secondCurrencyValue && setSecondCurrencyValue(secondValue);      
+      secondValue !== secondCurrencyValue && setSecondCurrencyValue(secondValue);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstCurrencyValue, firstCurrencyName, currencyRates]);
+
+  const array = 8 * 'd';
+  console.log('arr', array);
+  console.log('typeof arr', typeof array);
 
   useEffect(() => {
     if (currencyRates.length !== 0 && flag !== 'first') {
-      console.log('flag', flag);
       const firstValue = (secondCurrencyValue * parseFloat(secondCurrentCurrencyObj.sale) / parseFloat(firstCurrentCurrencyObj.buy)).toFixed(2);
       firstValue !== firstCurrencyValue && setFirstCurrencyValue(firstValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [secondCurrencyValue, secondCurrencyName, currencyRates]);
+  }, [secondCurrencyValue, secondCurrencyName, currencyRates, flag]);
 
   const onChangeFirstValue = (e) => {
     setFlag('first');
@@ -48,56 +51,56 @@ export default function CurrencyConverter({currencyRates}) {
     setFirstCurrencyName(e.currentTarget.value);
   };
 
-    const onChangeSecondCurrencyName = (e) => {
+  const onChangeSecondCurrencyName = (e) => {
     setFlag('second');
     setSecondCurrencyName(e.currentTarget.value);
   };
 
+  const onSwap = () => {
+    // const temporaryValue = firstCurrencyValue;
+    const temporaryName = firstCurrencyName;
+    const temporaryValue = firstCurrencyValue;
+    // setFlag('first');
+    setFirstCurrencyValue(secondCurrencyValue);
+    setFirstCurrencyName(secondCurrencyName);
+    // setFlag('second');
+    setSecondCurrencyValue(temporaryValue);
+    setSecondCurrencyName(temporaryName);
+    console.log('firstCurrencyName', firstCurrencyName);
+    console.log('secondCurrencyName', secondCurrencyName);
 
+  }
 
   return (
-    currencyRates.length !== 0 && <section>
-      <div className={s.currencyBlock}>
-        <p>Want to SALE</p>
-        <div className={s.inputBlock}>
-          <input type="text" value={firstCurrencyValue} onChange={onChangeFirstValue} />
-          <select
-            size='1'
-            id="firstSelect"
-            defaultValue={firstCurrencyName}
-            onChange={onChangeFirstCurrencyName}
-          >
-            {currencyRates.map(currency => (
-              <option
-                key={currency.ccy}
-                value={currency.ccy}
-              >{currency.ccy}</option>
-            ))}
-          </select>
-        </div>
-        <p>1 {firstCurrencyName} = {exchangeRate()} {secondCurrencyName}</p>
-      </div>
+    <main>
+      <h1>Currency Converter</h1>
+      {currencyRates.length !== 0 && <section>
+        <CurrencyBlock
+          currencyRates={currencyRates}
+          currencyValue={firstCurrencyValue}
+          onChangeValue={onChangeFirstValue}
+          onChangeCurrencyName={onChangeFirstCurrencyName}
+          exchangeRate={exchangeRate}
+          firstCurrencyName={firstCurrencyName}
+          secondCurrencyName={secondCurrencyName}
+          defaultValue={firstCurrencyName}
+          headerText={'I want to sale'}
+        />
 
-      <div className={s.currencyBlock}>
-        <p>Want to BUY</p>
-        <div className={s.inputBlock}>
-          <input type="text" value={secondCurrencyValue} onChange={onChangeSecondValue} />
-          <select
-            size='1'
-            id="secondSelect"
-            defaultValue={secondCurrencyName}
-            onChange={onChangeSecondCurrencyName}
-          >
-            {currencyRates.map(currency => (
-              <option
-                key={currency.ccy}
-                value={currency.ccy}
-              >{currency.ccy}</option>
-            ))}
-          </select>
-        </div>
-        <p>1 {secondCurrencyName} = {reverseExchangeRate()} {firstCurrencyName}</p>
-      </div>
-    </section>
-  );
+        <button type='button' className={s.swapButton} onClick={onSwap}>SWAP</button>
+        
+        <CurrencyBlock
+          currencyRates={currencyRates}
+          currencyValue={secondCurrencyValue}
+          onChangeValue={onChangeSecondValue}
+          onChangeCurrencyName={onChangeSecondCurrencyName}
+          exchangeRate={reverseExchangeRate}
+          firstCurrencyName={secondCurrencyName}
+          secondCurrencyName={firstCurrencyName}
+          defaultValue={secondCurrencyName}
+          headerText={'I want to buy'}
+        />
+      </section>}
+    </main>
+  )
 };

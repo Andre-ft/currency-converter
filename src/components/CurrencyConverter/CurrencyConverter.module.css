@@ -1,8 +1,49 @@
-.currencyBlock {
-  width: 300px;
-  display: inline-block;
+main {
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  max-width: 650px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 2px;
 }
 
-.inputBlock {
+h1 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+section {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+section:not(:last-child) {
+}
+
+@media only screen and (max-width: 660px) {
+  section {
+    flex-direction: column;
+    /* height: 320px; */
+  }
+
+  section:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  main {
+    max-width: 400px;
+  }
+}
+
+.swapButton {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 0px 4px;
+  background-color: #fff;
 }
