@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import s from './CurrencyBlock.module.css';
 
 export default function CurrencyBlock({
@@ -26,7 +26,7 @@ export default function CurrencyBlock({
         currencyRates.length !== 0 && <div className={s.currencyBlock}>
             <p className={s.blockHeader}>{headerText}</p>
             <div className={s.inputBlock}>
-                <form name='currencyForm'>
+                {/* <form name='currencyForm'> */}
                     <input name='input' type="text" value={currencyValue} onChange={onChangeValue} />
                     <select
                         name='select'
@@ -42,7 +42,7 @@ export default function CurrencyBlock({
                             >{currency.ccy}</option>
                         ))}
                     </select>
-                </form>
+                {/* </form> */}
             </div>
             <p className={s.uniteRate}>1 {firstCurrencyName} = {exchangeRate()} {secondCurrencyName}</p>
         </div>

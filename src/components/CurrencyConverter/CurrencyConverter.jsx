@@ -25,10 +25,6 @@ export default function CurrencyConverter({currencyRates}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firstCurrencyValue, firstCurrencyName, currencyRates]);
 
-  const array = 8 * 'd';
-  console.log('arr', array);
-  console.log('typeof arr', typeof array);
-
   useEffect(() => {
     if (currencyRates.length !== 0 && flag !== 'first') {
       const firstValue = (secondCurrencyValue * parseFloat(secondCurrentCurrencyObj.sale) / parseFloat(firstCurrentCurrencyObj.buy)).toFixed(2);
@@ -56,20 +52,20 @@ export default function CurrencyConverter({currencyRates}) {
     setSecondCurrencyName(e.currentTarget.value);
   };
 
-  const onSwap = () => {
-    // const temporaryValue = firstCurrencyValue;
-    const temporaryName = firstCurrencyName;
-    const temporaryValue = firstCurrencyValue;
-    // setFlag('first');
-    setFirstCurrencyValue(secondCurrencyValue);
-    setFirstCurrencyName(secondCurrencyName);
-    // setFlag('second');
-    setSecondCurrencyValue(temporaryValue);
-    setSecondCurrencyName(temporaryName);
-    console.log('firstCurrencyName', firstCurrencyName);
-    console.log('secondCurrencyName', secondCurrencyName);
+  // const onSwap = () => {
+  //   // const temporaryValue = firstCurrencyValue;
+  //   const temporaryName = firstCurrencyName;
+  //   const temporaryValue = firstCurrencyValue;
+  //   // setFlag('first');
+  //   setFirstCurrencyValue(secondCurrencyValue);
+  //   setFirstCurrencyName(secondCurrencyName);
+  //   // setFlag('second');
+  //   setSecondCurrencyValue(temporaryValue);
+  //   setSecondCurrencyName(temporaryName);
+  //   console.log('firstCurrencyName', firstCurrencyName);
+  //   console.log('secondCurrencyName', secondCurrencyName);
 
-  }
+  // }
 
   return (
     <main>
@@ -87,7 +83,7 @@ export default function CurrencyConverter({currencyRates}) {
           headerText={'I want to sale'}
         />
 
-        <button type='button' className={s.swapButton} onClick={onSwap}>SWAP</button>
+        {/* <button type='button' className={s.swapButton} onClick={onSwap}>SWAP</button> */}
         
         <CurrencyBlock
           currencyRates={currencyRates}

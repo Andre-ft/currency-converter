@@ -4,7 +4,7 @@ main {
   margin-right: auto;
   margin-top: 20px;
   padding-bottom: 20px;
-  max-width: 650px;
+  max-width: 550px;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 2px;
 }
@@ -12,6 +12,8 @@ main {
 h1 {
   margin-bottom: 0;
   margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 section {
@@ -20,10 +22,7 @@ section {
   align-items: center;
 }
 
-section:not(:last-child) {
-}
-
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 600px) {
   section {
     flex-direction: column;
     /* height: 320px; */
@@ -33,7 +32,11 @@ section:not(:last-child) {
     margin-bottom: 10px;
   }
   main {
-    max-width: 400px;
+    max-width: 300px;
+  }
+
+  h1 {
+    max-width: 200px;
   }
 }
 
