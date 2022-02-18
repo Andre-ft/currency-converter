@@ -52,20 +52,6 @@ export default function CurrencyConverter({currencyRates}) {
     setSecondCurrencyName(e.currentTarget.value);
   };
 
-  // const onSwap = () => {
-  //   // const temporaryValue = firstCurrencyValue;
-  //   const temporaryName = firstCurrencyName;
-  //   const temporaryValue = firstCurrencyValue;
-  //   // setFlag('first');
-  //   setFirstCurrencyValue(secondCurrencyValue);
-  //   setFirstCurrencyName(secondCurrencyName);
-  //   // setFlag('second');
-  //   setSecondCurrencyValue(temporaryValue);
-  //   setSecondCurrencyName(temporaryName);
-  //   console.log('firstCurrencyName', firstCurrencyName);
-  //   console.log('secondCurrencyName', secondCurrencyName);
-
-  // }
 
   return (
     <main>
@@ -82,9 +68,7 @@ export default function CurrencyConverter({currencyRates}) {
           defaultValue={firstCurrencyName}
           headerText={'I want to sale'}
         />
-
-        {/* <button type='button' className={s.swapButton} onClick={onSwap}>SWAP</button> */}
-        
+      
         <CurrencyBlock
           currencyRates={currencyRates}
           currencyValue={secondCurrencyValue}
