@@ -11,18 +11,7 @@ export default function CurrencyBlock({
     onChangeCurrencyName,
     defaultValue,
     headerText,
-}) {
-    // useEffect(() => {
-    //     if (currencyRates.length !== 0) {
-    //         const form = document.forms['currencyForm'];
-    //         const elem = form.select;
-    //         elem.selectedIndex = firstCurrencyName;
-    //         console.log('elem', index, elem.value);
-    //         console.log('defVal', defaultValue);
-    //     }
-    // }, [ firstCurrencyName])
-
-    return (
+}) { return (
         currencyRates.length !== 0 && <div className={s.currencyBlock}>
             <p className={s.blockHeader}>{headerText}</p>
             <div className={s.inputBlock}>
